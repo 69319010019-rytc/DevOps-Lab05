@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Renault Jigsaw Puzzle</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="startScreen" class="start-screen">
+      <div class="start-card">
+        <p class="eyebrow">F1 Garage Challenge</p>
+        <div class="title-wrap">
+          <span class="race-badge">Renault • Race Mode</span>
+          <h2>Ready for the race?</h2>
+        </div>
+        <p class="lead">Choose your challenge and launch the Renault puzzle.</p>
+
+        <div class="start-controls">
+          <label for="menuDifficulty">Difficulty</label>
+          <select id="menuDifficulty">
+            <option value="easy">Easy (3x3)</option>
+            <option value="medium">Medium (4x4)</option>
+            <option value="hard" selected>Hard (4x5)</option>
+            <option value="expert">Expert (5x5)</option>
+          </select>
+        </div>
+
+        <button id="startBtn" type="button">Start Race</button>
+      </div>
+
+      <div class="race-track" aria-hidden="true">
+        <div class="track-line"></div>
+        <div class="car-wrapper fixed-car">
+          <div id="menuCar" class="car car-red">
+            <span class="light"></span>
+            <span class="window"></span>
+            <span class="wheel wheel-left"></span>
+            <span class="wheel wheel-right"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="launchSequence" class="launch-sequence hidden" aria-live="polite">
+        <div class="launch-panel">
+          <div class="light-stack" aria-hidden="true">
+            <span id="redLight" class="light-bulb red"></span>
+            <span id="yellowLight" class="light-bulb yellow"></span>
+            <span id="greenLight" class="light-bulb green"></span>
+          </div>
+          <div class="launch-label">STARTING GRID</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="gameScreen" class="app-shell hidden">
+      <div class="f1-glow glow-left"></div>
+      <div class="f1-glow glow-right"></div>
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">F1 Garage Challenge</p>
+          <h1>Renault Jigsaw Puzzle</h1>
+        </div>
+
+        <div class="controls">
+          <label for="difficulty">ระดับความยาก</label>
+          <select id="difficulty">
+            <option value="easy">Easy (3x3)</option>
+            <option value="medium">Medium (4x4)</option>
+            <option value="hard" selected>Hard (4x5)</option>
+            <option value="expert">Expert (5x5)</option>
+          </select>
+          <button id="resetBtn" type="button">Reset Race</button>
+        </div>
+      </header>
+
+      <section class="stats-bar">
+        <div class="stat-card">
+          <span class="label">เวลา</span>
+          <strong id="timer">00:00</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">การเคลื่อนที่</span>
+          <strong id="moves">0</strong>
+        </div>
+        <div class="stat-card accent">
+          <span class="label">สถานะ</span>
+          <strong id="status">0 / 20 completed</strong>
+        </div>
+      </section>
+
+      <main class="game-panel">
+        <section class="board-wrapper">
+          <div class="board-header">
+            <span>Track Board</span>
+            <span class="chip">Pit lane</span>
+          </div>
+          <div id="board" class="board" aria-label="Puzzle board"></div>
+        </section>
+
+        <aside class="tray-panel">
+          <div class="tray-header">
+            <h2>Garage Pieces</h2>
+            <span class="chip subtle">Ready</span>
+          </div>
+          <div id="tray" class="tray" aria-label="Puzzle pieces"></div>
+        </aside>
+      </main>
+    </div>
+
+    <div id="resultModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+      <div class="modal-content">
+        <p class="eyebrow">Race Finish</p>
+        <h3 id="resultTitle">Victory Lap!</h3>
+        <p id="resultText">You completed the Renault puzzle.</p>
+        <button id="closeModalBtn" type="button">Race Again</button>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
